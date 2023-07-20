@@ -1,0 +1,26 @@
+<h2 mat-dialog-title class="dialog-title">Inserisci Nuova Nota</h2>
+
+<mat-form-field appearance="fill">
+  <mat-label>Title</mat-label>
+  <input matInput [formControl]="title" required>
+  <mat-error *ngIf="title.invalid">{{ getErrorMessage() }}</mat-error>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Inserisci data</mat-label>
+  <input matInput [matDatepicker]="picker" [(ngModel)]="note.date" required>
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<div class="button-container">
+  <button mat-button color="primary" (click)="save()">
+    <mat-icon>save</mat-icon>
+    Salva
+  </button>
+  <button mat-button color="warn" (click)="cancel()">
+    <mat-icon>cancel</mat-icon>
+    Annulla
+  </button>
+</div>

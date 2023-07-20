@@ -1,0 +1,8 @@
+<div *ngIf="note">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Titolo: {{ note.title }}</mat-card-title>
+      <mat-card-subtitle>Data Creazione: {{ note.date | date: 'd LLLL yyyy' }}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div>

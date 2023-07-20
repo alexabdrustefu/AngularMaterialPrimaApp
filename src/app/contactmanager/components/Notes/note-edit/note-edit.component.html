@@ -1,0 +1,29 @@
+<div class="note-edit-container">
+  <h2>Modifica Note</h2>
+  <ng-container *ngIf="data?.note">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Edit Note</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="note-edit-input">
+          <mat-label>Titolo</mat-label>
+          <input matInput [(ngModel)]="data.note.title" placeholder="Titolo">
+        </mat-form-field>
+
+        <mat-form-field class="note-edit-input">
+          <mat-label>Data</mat-label>
+          <input matInput [matDatepicker]="picker" matInput [(ngModel)]="data.note.date" placeholder="Data">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Aggiungi altri campi della nota che vuoi modificare -->
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="saveNotes()">Salva Note</button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</div>

@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <button mat-button class="sidenav-toggle" (click)="toggleSidenav.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Gestione Contatti</span>
+  <span class="example-spacer"></span>
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <button mat-button (click)="toggleTheme.emit()">
+    <mat-icon>toggle_on</mat-icon> Tema Scuro
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openInserisciNuovoContatto()">Inserisci Contatto</button>
+
+  </mat-menu>
+
+
+</mat-toolbar>

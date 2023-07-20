@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Elimina Nota</h2>
+<div mat-dialog-content>
+  <p>Sei sicuro di voler eliminare la nota "{{ data.note.title }}"?</p>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="deleteNote()">Elimina</button>
+  <button mat-button color="warn" (click)="closeDialog()">Annulla</button>
+</div>

@@ -1,0 +1,62 @@
+<div class="mat-elevation-z8">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Cerca Elemento" #input>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id  </th>
+      <td mat-cell *matCellDef="let note"> {{note.id}} </td>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Titolo </th>
+      <td mat-cell *matCellDef="let note"> {{note.title}} </td>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Data </th>
+      <td mat-cell *matCellDef="let note"> {{note.date | date: 'yyyy-MM-dd'}} </td>
+    </ng-container>
+
+    <!-- Action Column -->
+
+    <ng-container matColumnDef="visualizza" class="mat-icon-button-spacing">
+      <th mat-header-cell *matHeaderCellDef> Visualizza </th>
+      <td mat-cell *matCellDef="let note">
+        <button mat-icon-button color="secondary" (click)="openShow(note)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="elimina" class="mat-icon-button-spacing">
+      <th mat-header-cell *matHeaderCellDef> Elimina </th>
+      <td mat-cell *matCellDef="let note">
+        <button mat-icon-button color="warn" (click)="ConfirmDelete(note)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="edit" class="mat-icon-button-spacing">
+      <th mat-header-cell *matHeaderCellDef> Modifica </th>
+      <td mat-cell *matCellDef="let note">
+        <button mat-icon-button color="primary" (click)="ConfirmEdit(note)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="2" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+    aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
